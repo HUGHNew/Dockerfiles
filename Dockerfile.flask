@@ -1,0 +1,12 @@
+FROM git4docker/python3-alpine-cst:zh
+# for access
+EXPOSE 5000
+# for stats
+EXPOSE 9191
+WORKDIR /flask
+ENV maintainer hugh
+ENV version 1.0
+
+RUN apk update && apk add --no-cache gcc musl-dev linux-headers
+
+RUN pip install --no-cache-dir flask uwsgi
