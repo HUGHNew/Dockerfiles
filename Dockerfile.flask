@@ -5,8 +5,10 @@ EXPOSE 5000
 EXPOSE 9191
 WORKDIR /flask
 ENV maintainer hugh
-ENV version 1.0
+ENV version 1.1
 
 RUN apk update && apk add --no-cache gcc musl-dev linux-headers
 
 RUN pip install --no-cache-dir flask uwsgi
+
+CMD [ "uwsgi","/flask/uwsgi.ini" ]
