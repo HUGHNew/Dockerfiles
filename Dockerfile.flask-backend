@@ -4,10 +4,11 @@ EXPOSE 5000
 # for stats
 EXPOSE 9191
 WORKDIR /flask
+ENV maintainer hugh
+ENV version 1.1
+
 RUN apk update && apk add --no-cache gcc musl-dev linux-headers
 
-RUN pip install --no-cache-dir flask flask-cors uwsgi 
+RUN pip install --no-cache-dir flask flask-cors uwsgi requests
 
-ENV maintainer hugh
-ENV version 1.2
 CMD [ "uwsgi","/flask/uwsgi.ini" ]
