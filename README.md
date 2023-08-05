@@ -8,9 +8,5 @@ Dockerfile for self usage
 - Torch-Flask(Base:flask)
   - Torchvision cpuonly
   - Flask==2.0.1 Flask-cors
-
-
-## run something funny
-
-flask nginx in dockers
+- cs143 containers
 
