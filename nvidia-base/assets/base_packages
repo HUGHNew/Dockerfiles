@@ -1,0 +1,14 @@
+ca-certificates
+vim
+git
+curl
+gcc
+htop
+tmux
+tree
+bat
+nvidia-driver
+nvidia-cuda-toolkit
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
