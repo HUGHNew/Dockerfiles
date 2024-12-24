@@ -27,7 +27,7 @@ RUN apt update && \
     bash /tmp/build/mamba-init.sh && \
     rm -rf /var/lib/apt/lists/* /tmp/build
 
-RUN update-alternatives --set editor /usr/bin/vim.basic
+RUN update-alternatives --set editor /usr/bin/vim.basic && ln -sf /usr/share/zoneinfo/Asia/Singapore /etc/localtime
 
 ############################################
 ARG BASE_IMAGE=base
@@ -53,7 +53,7 @@ ARG _HOME=/sharefs/${_USER}
 ARG _PW=rootpass
 
 RUN usermod --password $(echo ${_PW} | openssl passwd -1 -stdin) root
-RUN useradd -m ${_USER} -d ${_HOME} -u ${_UID} -G sudo -s /bin/zsh && echo "${_USER}:${_PW}" | chpasswd
+RUN useradd -m ${_USER} -d ${_HOME} -u ${_UID} -s /bin/zsh && echo "${_USER}:${_PW}" | chpasswd
 RUN su - ${_USER} -c /tmp/dotfiles/startup.sh
 USER ${_UID}:${_GID}
 WORKDIR ${_HOME}

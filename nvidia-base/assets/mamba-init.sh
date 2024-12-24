@@ -26,7 +26,6 @@ auto_update_conda: false
 channels:
   - conda-forge
   - nodefaults
-channel_priority: strict
 EOF
 chmod 666 "${MAMBARC}"
 chmod +x $BIN_FOLDER/micromamba
