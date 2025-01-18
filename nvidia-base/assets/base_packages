@@ -7,7 +7,6 @@ htop
 tmux
 tree
 bat
-nvidia-driver
 nvidia-cuda-toolkit
 zsh
 zsh-autosuggestions
