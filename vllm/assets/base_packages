@@ -2,12 +2,14 @@ ca-certificates
 vim
 git
 curl
+wget
 gcc
+g++
+ninja-build
 htop
 tmux
 tree
 bat
-nvidia-cuda-toolkit
 zsh
 zsh-autosuggestions
 zsh-syntax-highlighting

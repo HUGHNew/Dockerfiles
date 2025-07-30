@@ -1,0 +1,32 @@
+ARG ROOT_IMAGE
+FROM ${ROOT_IMAGE} AS root
+ARG _PW=rootpass
+
+COPY <<EOF /etc/apt/sources.list.d/debian.sources
+Types: deb
+URIs: http://mirrors.ustc.edu.cn/debian
+Suites: bookworm bookworm-updates
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb
+URIs: http://mirrors.ustc.edu.cn/debian-security
+Suites: bookworm-security
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+EOF
+
+COPY ./assets /tmp/build
+ADD ./micromamba /usr/local/bin/micromamba
+
+RUN apt-get update && \
+    xargs apt-get install -y --no-install-recommends < /tmp/build/base_packages && \
+    bash /tmp/build/mamba-init.sh && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN update-alternatives --set editor /usr/bin/vim.basic && \
+    ln -sf /usr/share/zoneinfo/Asia/Singapore /etc/localtime && \
+    usermod --password $(echo ${_PW} | openssl passwd -1 -stdin) root && \
+    rm -r /tmp/build
+
+## base ends ##

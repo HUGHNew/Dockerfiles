@@ -29,7 +29,7 @@ channels:
 EOF
 chmod 666 "${MAMBARC}"
 chmod +x $BIN_FOLDER/micromamba
-micromamba install -r $MAMBA_PREFIX -y python=3.10
+# micromamba install -r $MAMBA_PREFIX -y python=3.10
 
 cat <<EOF > /etc/pip.conf
 [global]

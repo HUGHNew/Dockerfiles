@@ -9,4 +9,4 @@ Dockerfile for self usage
   - Torchvision cpuonly
   - Flask==2.0.1 Flask-cors
 - cs143 containers
-
+- vllm: (debian12 + micromamba + dotfiles for vLLM==0.10.0): read Makefile for details
