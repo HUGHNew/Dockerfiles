@@ -1,4 +1,6 @@
 sync.sh
+dotfiles
+micromamba
 
 # archive files
 *.xz
