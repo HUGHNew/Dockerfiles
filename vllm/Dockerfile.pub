@@ -1,8 +1,9 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE:-root} AS base
+ARG VLLM_VER
 ARG _GID
 ARG _GRP=docker
-ARG VLLM_VER
+ARG PY_VER=3.12
 SHELL ["/bin/bash", "-c"]
 
 ENV PYTHONPATH=.:${PYTHONPATH}
@@ -10,7 +11,7 @@ RUN groupadd -g ${_GID} ${_GRP} && \
     chown -R :${_GID} /opt/micromamba && \
     chmod -R g+w /opt/micromamba && \
     source /etc/profile.d/mamba.sh && \
-    micromamba install -y python=3.12
+    micromamba install -y python=${PY_VER}
 ENV PATH=$PATH:/opt/micromamba/bin
 RUN pip install vllm==${VLLM_VER} --extra-index-url https://download.pytorch.org/whl/cu128 --no-cache-dir && \
     pip cache purge

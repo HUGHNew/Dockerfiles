@@ -33,5 +33,5 @@ chmod +x $BIN_FOLDER/micromamba
 
 cat <<EOF > /etc/pip.conf
 [global]
-index-url = https://mirrors.bfsu.edu.cn/pypi/web/simple
+index-url = https://mirrors.ustc.edu.cn/pypi/web/simple
 EOF

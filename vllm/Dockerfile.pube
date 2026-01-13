@@ -1,13 +1,13 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE:-root} AS base
+ARG FA_WHL
 # do something you like here
 # install flash_attn for an example
-COPY flash_attn-2.8.2+cu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl /tmp/flash_attn-2.8.2+cu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl
+COPY ${FA_WHL} /tmp/${FA_WHL}
 SHELL ["/bin/bash", "-c"]
 
 ENV PYTHONPATH=.:${PYTHONPATH}
 ENV PATH=$PATH:/opt/micromamba/bin
-RUN pip install /tmp/flash_attn-2.8.2+cu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl && \
-    rm /tmp/flash_attn-2.8.2+cu12torch2.7cxx11abiTRUE-cp312-cp312-linux_x86_64.whl
+RUN pip install /tmp/${FA_WHL} && rm /tmp/${FA_WHL}
 
 ## public ends ##
